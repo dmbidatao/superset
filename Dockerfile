@@ -251,7 +251,6 @@ RUN --mount=type=cache,target=${SUPERSET_HOME}/.cache/uv \
 RUN uv pip install .[postgres]
 RUN python -m compileall /app/superset
 
-RUN pip install psycopg2
 USER superset
 
 ######################################################################
