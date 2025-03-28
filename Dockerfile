@@ -115,7 +115,6 @@ RUN useradd --user-group -d ${SUPERSET_HOME} -m --no-log-init --shell /bin/bash 
 COPY --chmod=755 docker/*.sh /app/docker/
 
 RUN pip install --no-cache-dir --upgrade uv
-RUN pip install psycopg2
 
 # Using uv as it's faster/simpler than pip
 RUN uv venv /app/.venv
@@ -252,6 +251,7 @@ RUN --mount=type=cache,target=${SUPERSET_HOME}/.cache/uv \
 RUN uv pip install .[postgres]
 RUN python -m compileall /app/superset
 
+RUN pip install psycopg2
 USER superset
 
 ######################################################################
